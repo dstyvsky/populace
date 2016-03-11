@@ -13,13 +13,13 @@
   <tbody>
     <% @posts.each do |post| %>
       <tr class="my_row">
-        <td><%= image_tag((post.universal_picture_link), :class => "preview_image") %></td>
+        <td><%= image_tag((post.universal_picture_link), :class => "preview_image") %> </td>
         
-        <td><%= link_to post.title, post.universal_link %>
+        <td><%= link_to post.title, post.universal_link %> (<%=Domainatrix.parse(post.universal_link).domain %>)
             <br><%=post.body %>
             <br>by <%= post.user.name %></td>
         
-        <td><%= link_to 'Show', post %></td>
+        <td><%= link_to 'Comment', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
