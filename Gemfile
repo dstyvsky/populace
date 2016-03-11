@@ -12,6 +12,7 @@ gem 'link_thumbnailer'
 gem 'domainatrix'
 group :development, :test do
   gem 'byebug'
+  gem 'pry'
 end
 group :development do
   gem 'web-console', '~> 2.0'
