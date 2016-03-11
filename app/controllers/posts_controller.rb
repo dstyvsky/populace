@@ -11,7 +11,12 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
 
+      @post = Post.find(params[:id])
+
       @comment = current_user.comments.build
+      @comment.user_id = current_user.id
+
+      @comments = @post.comments
       
   end
 
@@ -72,7 +77,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body, :user_id, :universal_link)
+      params.require(:post).permit(:title, :body, :user_id, :post_id, :universal_link)
     end
 
     def quick_image
