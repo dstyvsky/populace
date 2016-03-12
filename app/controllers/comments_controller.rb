@@ -6,10 +6,10 @@ class CommentsController < ApplicationController
 		comment.user = current_user
 		if comment.save
 			flash[:notice] = "Comment created!"
-			redirect_to root_url
 		else
-			redirect_to root_url
+			flash[:danger] = "Not Posted"
 		end
+		redirect_to @post
 	end
 
 	def new
