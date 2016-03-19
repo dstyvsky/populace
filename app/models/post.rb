@@ -8,11 +8,13 @@ class Post < ActiveRecord::Base
   private
 
   def create_universal_picture_link
+
   	begin
   		self.universal_picture_link = LinkThumbnailer.generate(universal_link).images.first.src.to_s
   	rescue
   		self.universal_picture_link ||= "mandelbrot.png"
   	end
+    
   end
   
 
