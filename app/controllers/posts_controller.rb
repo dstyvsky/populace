@@ -12,12 +12,13 @@ class PostsController < ApplicationController
   def show
 
       @post = Post.find(params[:id])
+			@comments = @post.comments
+			if user_signed_in?
+				@comment = current_user.comments.build
+				@comment.user_id = current_user.id
+			end
 
-      @comment = current_user.comments.build
-      @comment.user_id = current_user.id
-
-      @comments = @post.comments
-      
+            
   end
 
   # GET /posts/new
